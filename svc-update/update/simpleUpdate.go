@@ -52,7 +52,6 @@ func (e *ExternalInterface) SimpleUpdate(ctx context.Context, taskID string, ses
 	targetURI := "/redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate"
 
 	taskInfo := &common.TaskUpdateInfo{Context: ctx, TaskID: taskID, TargetURI: targetURI, UpdateTask: e.External.UpdateTask, TaskRequest: string(req.RequestBody)}
-
 	var updateRequest SimpleUpdateRequest
 	err := json.Unmarshal(req.RequestBody, &updateRequest)
 	if err != nil {
@@ -89,8 +88,8 @@ func (e *ExternalInterface) SimpleUpdate(ctx context.Context, taskID string, ses
 	partialResultFlag := false
 	subTaskChannel := make(chan int32, len(targetList))
 	serverURI := ""
-	for id, target := range targetList {
-		updateRequest.Targets = target
+	for id, _ := range targetList {
+		updateRequest.Targets = nil
 		marshalBody, err := JSONMarshalFunc(updateRequest)
 		if err != nil {
 			errMsg := "Unable to parse the simple update request" + err.Error()
