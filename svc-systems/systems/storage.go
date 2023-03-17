@@ -500,7 +500,7 @@ func (e *ExternalInterface) DeleteVolume(ctx context.Context, req *systemsproto.
 	contactRequest.DeviceInfo = target
 	contactRequest.OID = fmt.Sprintf("/ODIM/v1/Systems/%s/Storage/%s/Volumes/%s", requestData[1], req.StorageInstance, req.VolumeID)
 
-	body, _, _, getResponse, err := scommon.ContactPlugin(ctx, contactRequest, "error while deleting a volume: ")
+	body, location, pluginIP, getResponse, err := scommon.ContactPlugin(ctx, contactRequest, "error while deleting a volume: ")
 	if err != nil {
 		resp.StatusCode = getResponse.StatusCode
 		json.Unmarshal(body, &resp.Body)
@@ -508,6 +508,10 @@ func (e *ExternalInterface) DeleteVolume(ctx context.Context, req *systemsproto.
 		l.LogWithFields(ctx).Error(errMsg)
 		common.GeneralError(http.StatusInternalServerError, response.InternalError,
 			errMsg, nil, taskInfo)
+		return
+	}
+	if getResponse.StatusCode == http.StatusAccepted {
+		scommon.SavePluginTaskInfo(ctx, pluginIP, plugin.IP, taskID, location)
 		return
 	}
 
