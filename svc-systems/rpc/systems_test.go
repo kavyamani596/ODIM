@@ -719,7 +719,7 @@ func TestSystems_DeleteVolume(t *testing.T) {
 				},
 				resp: &systemsproto.SystemsResponse{},
 			},
-			wantStatusCode: http.StatusNoContent,
+			wantStatusCode: http.StatusAccepted,
 		},
 		{
 			name: "Request with invalid token",
