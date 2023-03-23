@@ -688,6 +688,9 @@ func TestSystems_CreateVolume(t *testing.T) {
 func TestSystems_DeleteVolume(t *testing.T) {
 	config.SetUpMockConfig(t)
 	sys := new(Systems)
+	sys.GetSessionUserName = getSessionUserNameForTesting
+	sys.CreateTask = createTaskForTesting
+	sys.UpdateTask = mockUpdateTask
 	sys.IsAuthorizedRPC = mockIsAuthorized
 	sys.EI = mockGetExternalInterface()
 
