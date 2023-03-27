@@ -391,7 +391,12 @@ func (s *Systems) CreateVolume(ctx context.Context, req *systemsproto.VolumeRequ
 		DevicePassword: common.DecryptWithPrivateKey,
 		UpdateTask:     s.UpdateTask,
 	}
+	
+	var threadID int = 1
+	ctxt := context.WithValue(ctx, common.ThreadName, common.CreateVolume)
+	ctx = context.WithValue(ctxt, common.ThreadID, strconv.Itoa(threadID))
 	go s.EI.CreateVolume(ctx, req, &pc, taskID)
+	threadID++
 	l.LogWithFields(ctx).Debugf("outgoing response for CreateVolume: %s", string(resp.Body))
 	return &resp, nil
 }
@@ -448,8 +453,11 @@ func (s *Systems) DeleteVolume(ctx context.Context, req *systemsproto.VolumeRequ
 		UpdateTask:     s.UpdateTask,
 	}
 
+	var threadID int = 1
+	ctxt := context.WithValue(ctx, common.ThreadName, common.DeleteVolume)
+	ctx = context.WithValue(ctxt, common.ThreadID, strconv.Itoa(threadID))
 	go s.EI.DeleteVolume(ctx, req, &pc, taskID)
-	// fillSystemProtoResponse(ctx, &resp, data)
+	threadID++
 	l.LogWithFields(ctx).Debugf("outgoing response DeleteVolume: %s", string(resp.Body))
 	return &resp, nil
 }

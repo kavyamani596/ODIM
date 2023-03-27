@@ -379,7 +379,7 @@ func (e *ExternalInterface) DeleteVolume(ctx context.Context, req *systemsproto.
 	var resp response.RPC
 	var targetURI = "/redfish/v1/Systems/" + req.SystemID + "/Storage/" + req.StorageInstance + "/Volumes" + req.VolumeID
 	//create task
-	taskInfo := &common.TaskUpdateInfo{TaskID: taskID, TargetURI: targetURI,
+	taskInfo := &common.TaskUpdateInfo{Context: ctx,TaskID: taskID, TargetURI: targetURI,
 		UpdateTask: pc.UpdateTask, TaskRequest: string(req.RequestBody)}
 	var volume smodel.Volume
 	// unmarshalling the volume
