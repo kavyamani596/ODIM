@@ -216,6 +216,8 @@ const (
 	SessionUserID           = "sessionuserid"
 	SessionRoleID           = "sessionroleid"
 	StatusCode              = "statuscode"
+	CreateVolume            = "CreateVolume"
+	DeleteVolume            = "DeleteVolume"
 	ComputerSystemReset     = "ComputerSystemReset"
 	ChangeBootOrderSettings = "ChangeBootOrderSettings"
 	GetFabricManagerChassis = "GetFabricManagerChassis"
