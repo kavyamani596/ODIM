@@ -65,8 +65,7 @@ func SaveEventSubscriptionID(ctx context.Context, taskID, subscriptionID string)
 	return nil
 }
 
-// SaveEventSubscriptionID saves the event subscription id in db
-// it receives taskID and subscription ID. taskID is the key.
+// GetEventSubscriptionID returns the subcriptionID and error
 func GetEventSubscriptionID(ctx context.Context, taskID string) (string, error) {
 
 	table := "EventSubscriptionID"

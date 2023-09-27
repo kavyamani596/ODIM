@@ -81,6 +81,7 @@ type IndicatorLED string
 // BootProgressTypes - The last boot progress state
 type BootProgressTypes string
 
+// ConnectedTypesSupported ...
 type ConnectedTypesSupported string
 
 const (
@@ -372,8 +373,10 @@ const (
 	//IndicatorLEDOff - The indicator LED is off
 	IndicatorLEDOff IndicatorLED = "Off"
 
+	// ConnectedTypesSupportedKVMIP ...
 	ConnectedTypesSupportedKVMIP ConnectedTypesSupported = "KVMIP"
 
+	// ConnectedTypesSupportedOEM ...
 	ConnectedTypesSupportedOEM ConnectedTypesSupported = "OEM"
 )
 
@@ -465,6 +468,7 @@ type ComputerSystem struct {
 	Composition                     *Composition           `json:"Composition,omitempty"`
 }
 
+// HostGraphicalConsole ...
 type HostGraphicalConsole struct {
 	ConnectedTypesSupported []string `json:"ConnectedTypesSupported,omitempty"` //enum
 	MaxConcurrentSessions   int      `json:"MaxConcurrentSessions,omitempty"`
@@ -472,6 +476,7 @@ type HostGraphicalConsole struct {
 	ServiceEnabled          bool     `json:"ServiceEnabled,omitempty"`
 }
 
+// HostSerialConsole ...
 type HostSerialConsole struct {
 	IPMI                  *SerialConsoleProtocol `json:"IPMI,omitempty"`
 	MaxConcurrentSessions int                    `json:"MaxConcurrentSessions,omitempty"`
@@ -1175,7 +1180,7 @@ type Processors struct {
 	AdditionalFirmwareVersions *AdditionalFirmwareVersions `json:"AdditionalFirmwareVersions,omitempty"`
 }
 
-// SystemInterface redfish structure
+// MemoryMetrics : SystemInterface redfish structure
 type MemoryMetrics struct {
 	Oid                           string         `json:"@odata.id"`
 	Ocontext                      string         `json:"@odata.context,omitempty"`
