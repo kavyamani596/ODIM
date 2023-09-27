@@ -27,6 +27,9 @@ const (
 	MetricReport
 )
 
+// ctxValue defines string type for context.WithValue lint issue
+type ctxValue string
+
 const (
 	// RoleAdmin defines admin role for all service to authorize
 	RoleAdmin = "Administrator"
@@ -199,13 +202,13 @@ const (
 
 // Below fields are Process Name for logging
 const (
-	TransactionID = "transactionid"
-	ThreadID      = "threadid"
-	ThreadName    = "threadname"
-	ActionName    = "actionname"
-	ActionID      = "actionid"
-	ProcessName   = "processname"
-	RequestBody   = "requestbody"
+	TransactionID ctxValue = "transactionid"
+	ThreadID      ctxValue = "threadid"
+	ThreadName    ctxValue = "threadname"
+	ActionName    ctxValue = "actionname"
+	ActionID      ctxValue = "actionid"
+	ProcessName   ctxValue = "processname"
+	RequestBody   ctxValue = "requestbody"
 )
 
 // Below fields are service names for logging

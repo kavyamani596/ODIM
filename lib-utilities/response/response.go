@@ -89,7 +89,7 @@ const (
 	SessionLimitExceeded = BaseVersion + "SessionLimitExceeded"
 	// InvalidURI defines the status message at the time of URL Not Found
 	InvalidURI = BaseVersion + "InvalidURI"
-	//Indicates that no more resources can be created on the resource as
+	// CreateLimitReachedForResource Indicates that no more resources can be created on the resource as
 	// it has reached its create limit.
 	CreateLimitReachedForResource = BaseVersion + "CreateLimitReachedForResource"
 )

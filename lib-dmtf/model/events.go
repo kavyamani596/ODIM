@@ -62,6 +62,7 @@ type SMTPAuthentication string
 // SMTPConnectionProtocol - This property shall contain the connection type to the outgoing SMTP server.
 type SMTPConnectionProtocol string
 
+// DiagnosticDataType ...
 type DiagnosticDataType string
 
 const (
@@ -300,26 +301,26 @@ const (
 	// SMTPConnectionProtocolTLSSSL - SMTPConnection Protocol type TLS_SSL
 	SMTPConnectionProtocolTLSSSL SMTPConnectionProtocol = "TLS_SSL"
 
-	//Manager diagnostic data.
+	// DiagnosticDataTypeManager : Manager diagnostic data.
 	DiagnosticDataTypeManager DiagnosticDataType = "Manager"
 
-	//Pre-OS diagnostic data.
+	// DiagnosticDataTypePreOS :Pre-OS diagnostic data.
 	DiagnosticDataTypePreOS DiagnosticDataType = "PreOS"
 
-	//Operating system (OS) diagnostic data.
+	// DiagnosticDataTypeOS :Operating system (OS) diagnostic data.
 	DiagnosticDataTypeOS DiagnosticDataType = "OS"
 
-	//OEM diagnostic data.
+	// DiagnosticDataTypeOEM :OEM diagnostic data.
 	DiagnosticDataTypeOEM DiagnosticDataType = "OEM"
 
-	//UEFI Common Platform Error Record.
+	// DiagnosticDataTypeCPER :UEFI Common Platform Error Record.
 	DiagnosticDataTypeCPER DiagnosticDataType = "CPER"
 
-	// A Section of a UEFI Common Platform Error Record.
+	// DiagnosticDataTypeCPERSection : A Section of a UEFI Common Platform Error Record.
 	DiagnosticDataTypeCPERSection DiagnosticDataType = "CPERSection"
 )
 
-// Details for a CPER section or record associated with an event.
+// CPER : Details for a CPER section or record associated with an event.
 type CPER struct {
 	NotificationType string      `json:"NotificationType,omitempty"`
 	Oem              interface{} `json:"Oem,omitempty"`

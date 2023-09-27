@@ -24,6 +24,9 @@ import (
 	"google.golang.org/grpc/metadata"
 )
 
+// ctxValue defines string type
+type ctxValue string
+
 // commonHeaders holds the common response headers
 var commonHeaders = map[string]string{
 	"Connection":             "keep-alive",
@@ -55,12 +58,12 @@ func GetContextData(ctx context.Context) context.Context {
 	md, _ := metadata.FromIncomingContext(ctx)
 	ctx = metadata.NewIncomingContext(ctx, md)
 	if len(md[TransactionID]) > 0 {
-		ctx = context.WithValue(ctx, ProcessName, md[ProcessName][0])
-		ctx = context.WithValue(ctx, TransactionID, md[TransactionID][0])
-		ctx = context.WithValue(ctx, ActionID, md[ActionID][0])
-		ctx = context.WithValue(ctx, ActionName, md[ActionName][0])
-		ctx = context.WithValue(ctx, ThreadID, md[ThreadID][0])
-		ctx = context.WithValue(ctx, ThreadName, md[ThreadName][0])
+		ctx = context.WithValue(ctx, ctxValue(ProcessName), md[ProcessName][0])
+		ctx = context.WithValue(ctx, ctxValue(TransactionID), md[TransactionID][0])
+		ctx = context.WithValue(ctx, ctxValue(ActionID), md[ActionID][0])
+		ctx = context.WithValue(ctx, ctxValue(ActionName), md[ActionName][0])
+		ctx = context.WithValue(ctx, ctxValue(ThreadID), md[ThreadID][0])
+		ctx = context.WithValue(ctx, ctxValue(ThreadName), md[ThreadName][0])
 	}
 
 	return ctx
@@ -70,12 +73,12 @@ func GetContextData(ctx context.Context) context.Context {
 func CreateMetadata(ctx context.Context) context.Context {
 	if ctx.Value(TransactionID) != nil {
 		md := metadata.New(map[string]string{
-			ProcessName:   ctx.Value(ProcessName).(string),
-			TransactionID: ctx.Value(TransactionID).(string),
-			ActionName:    ctx.Value(ActionName).(string),
-			ActionID:      ctx.Value(ActionID).(string),
-			ThreadID:      ctx.Value(ThreadID).(string),
-			ThreadName:    ctx.Value(ThreadName).(string),
+			ProcessName:   ctxValue(ctx.Value(ProcessName).(string)),
+			TransactionID: ctxValue(ctx.Value(TransactionID).(string)),
+			ActionName:    ctxValue(ctx.Value(ActionName).(string)),
+			ActionID:      ctxValue(ctx.Value(ActionID).(string)),
+			ThreadID:      ctxValue(ctx.Value(ThreadID).(string)),
+			ThreadName:    ctxValue(ctx.Value(ThreadName).(string)),
 		})
 		ctx = metadata.NewOutgoingContext(ctx, md)
 	}

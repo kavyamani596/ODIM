@@ -14,48 +14,48 @@
 
 package model
 
-// The type of SFP device that is attached to this port.
+// Type :The type of SFP device that is attached to this port.
 type Type string
 
 const (
 
-	// The SFP conforms to the SFF Specification for SFP.
+	// TypeSFP :The SFP conforms to the SFF Specification for SFP.
 	TypeSFP Type = "SFP"
 
-	// The SFP conforms to the SFF Specification for SFP+.
+	// TypeSFPPlus :The SFP conforms to the SFF Specification for SFP+.
 	TypeSFPPlus Type = "SFPPlus"
 
-	// The SFP conforms to the SFF Specification for SFP+ and IEEE 802.3by Specification.
+	// TypeSFP28 :The SFP conforms to the SFF Specification for SFP+ and IEEE 802.3by Specification.
 	TypeSFP28 Type = "SFP28"
 
-	// The SFP conforms to the CSFP MSA Specification.
+	// TypecSFP :The SFP conforms to the CSFP MSA Specification.
 	TypecSFP Type = "cSFP"
 
-	// The SFP conforms to the SFP-DD MSA Specification.
+	// TypeSFPDD :The SFP conforms to the SFP-DD MSA Specification.
 	TypeSFPDD Type = "SFPDD"
 
-	// The SFP conforms to the SFF Specification for QSFP.
+	// TypeQSFP :The SFP conforms to the SFF Specification for QSFP.
 	TypeQSFP Type = "QSFP"
 
-	// The SFP conforms to the SFF Specification for QSFP+.
+	// TypeQSFPPlus :The SFP conforms to the SFF Specification for QSFP+.
 	TypeQSFPPlus Type = "QSFPPlus"
 
-	// The SFP conforms to the SFF Specification for QSFP14.
+	// TypeQSFP14 :The SFP conforms to the SFF Specification for QSFP14.
 	TypeQSFP14 Type = "QSFP14"
 
-	// The SFP conforms to the SFF Specification for QSFP28.
+	// TypeQSFP28 :The SFP conforms to the SFF Specification for QSFP28.
 	TypeQSFP28 Type = "QSFP28"
 
-	// The SFP conforms to the SFF Specification for QSFP56.
+	// TypeQSFP56 :The SFP conforms to the SFF Specification for QSFP56.
 	TypeQSFP56 Type = "QSFP56"
 
-	// The SFP conforms to the SFF Specification SFF-8644.
+	// TypeMiniSASHD :The SFP conforms to the SFF Specification SFF-8644.
 	TypeMiniSASHD Type = "MiniSASHD"
 
-	// The SFP conforms to the QSFP Double Density Specification.
+	// TypeQSFPDD :The SFP conforms to the QSFP Double Density Specification.
 	TypeQSFPDD Type = "QSFPDD"
 
-	// The SFP conforms to the OSFP Specification.
+	// TypeOSFP :The SFP conforms to the OSFP Specification.
 	TypeOSFP Type = "OSFP"
 )
 
@@ -103,7 +103,7 @@ type Port struct {
 	SFP                     SFP                  `json:"SFP,omitempty"`
 	CXL                     *CXL                 `json:"CXL,omitempty"`
 	InfiniBand              *InfiniBand          `json:"InfiniBand,omitempty"`
-	RemotePortId            string               `json:"RemotePortId,omitempty"`
+	RemotePortID            string               `json:"RemotePortId,omitempty"`
 }
 
 // InfiniBand redfish structure
